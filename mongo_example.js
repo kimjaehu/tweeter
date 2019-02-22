@@ -1,6 +1,6 @@
 "use strict";
 
-const MongoClient = require("mongodb").MongoClient;
+const {MongoClient} = require("mongodb");
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
@@ -9,21 +9,29 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     throw err;
   }
 
-  // ==> We have a connection to the "test-tweets" db,
-  //     starting here.
+  // We have a connection to the "tweeter" db, starting here.
   console.log(`Connected to mongodb: ${MONGODB_URI}`);
 
-  // ==> Let's "get all the tweets". In Mongo-speak, we "find" them.
-  db.collection("tweets").find({}, (err, results) => {
+  // ==> Refactored and wrapped as new, tweet-specific function:
+
+  function getTweets(callback) {
+    db.collection("tweets").find().toArray(callback);
+  }
+  
+
+  // ==> Later it can be invoked. Remember even if you pass
+  //     `getTweets` to another scope, it still has closure over
+  //     `db`, so it will still work. Yay!
+
+  getTweets((err, tweets) => {
     if (err) throw err;
 
-    // ==> So we Read The Fantastic Manual, right?
+    console.log("Logging each tweet:");
+    for (let tweet of tweets) {
+      console.log(tweet);
+    }
 
-    // ==> We can iterate on the cursor to get results, one at a time:
-    console.log("for each item yielded by the cursor:");
-    results.each((err, item) => console.log("  ", item));
-
-    // This is the end...
     db.close();
   });
+
 });
