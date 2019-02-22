@@ -11,6 +11,11 @@ This repository is the starter code for the project: Students will fork and clon
 3. Tweeter only takes 140 characters.
 4. Click tweet button to submit. :+1:
 
+## Screenshots
+!["Screenshot of compose box](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-textarea.png)
+
+!["Screenshot of tweets](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-tweets.png)
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
@@ -23,7 +28,6 @@ Some basic commands are:
 npm install
 npm run local
 ```
-
 
 ## Dependencies
 
