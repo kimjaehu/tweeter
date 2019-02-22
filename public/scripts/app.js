@@ -1,39 +1,34 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
+//return for promise
 function loadTweets() {
   return $.ajax('/tweets', { method: 'GET' })
   return tweets;
 }
 
+//return for promise
 function loadNewTweet() {
   return $.ajax('/tweets', { method: 'GET' })
   return tweets[tweets.length];
 }
 
+//prepending the tweets
 function renderTweets(tweets) {
-  // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
     for (tweet in tweets) {
     let tweetHtml = createTweetElement(tweets[tweet]);
     $('#tweets-container').prepend(tweetHtml);
   }  
 }
 
+//prevention of HTML code in inputs
 function escape(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
 
+//now - time when the message was created
 function timePassed(date) {
 
   let seconds = Math.floor((new Date() - date) / 1000);
-
   let interval = Math.floor(seconds / 31536000);
 
   if (interval > 1) {
@@ -58,25 +53,8 @@ function timePassed(date) {
   return Math.floor(seconds) + " seconds ago";
 }
 
+//to html format
 function createTweetElement(tweet) {
-  // let $tweet = $('<article>').addClass('tweet');
-  // ...
-  // let articleElm = document.createElement('article');
-  // let headerElm = document.createElement('header');
-  // let imgElm = document.createElement('img');
-  // let spanElm = document.createElement('span');
-
-  // articleElm.appendChild(headerElm);
-  // headerElm.classList.add("message-header");
-  // headerElm.appendChild(imgElm);
-  // imgElm.classList.add("message-logo");
-  // imgElm.attr("src", tweet.user.avatars.small)
-  // imgElm.append(spanElm);
-  // spanElm.classList.add("message-id");
-  // spanElm.add(document.createTextNode(tweet.user.avatars.small))
-
-  // console.log(imgElm)  
-  // return imgElm;
 
   let $tweet = 
   `
@@ -125,11 +103,6 @@ $(document).ready(function() {
         renderTweets(tweetData)
       });
 
-
-      // const dataPromise = loadNewTweet();
-      // dataPromise.then(function(tweetData){
-      // renderTweets(tweetData);
-      // });
       $('.error').hide(50)
     }
     event.preventDefault();
