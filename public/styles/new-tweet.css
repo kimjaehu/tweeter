@@ -75,6 +75,14 @@ article {
   border-width: 1.5px;
   margin: 40px 0;
   opacity: 0.7;
+
+  .message-header {
+    background-color: #e6e6e6;
+    height: 80px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
 }
 article:hover {
   opacity: 1;

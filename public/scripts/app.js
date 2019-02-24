@@ -72,18 +72,28 @@ function createTweetElement(tweet) {
     ${escape(tweet.content.text)}
     </div>
     <footer class="message-footer">
-      <div>${timePassed(tweet.created_at)}</div>
+      <span class="time-passed">${timePassed(tweet.created_at)}</span>
+    <button type="button" class="btn btn-info btn-sm">
+      <span class="glyphicon glyphicon-thumbs-up"></span>
+      <span class="like-count">0</span>
+    </button>
     </footer>
   </article>
   `
   return $tweet;
 }
 
+function likes(tweets){
+    
+  console.log(tweets);
+}
+
 $(document).ready(function() {
   const dataPromise = loadTweets();
   dataPromise.then(function(tweetData){
     renderTweets(tweetData);
-  });
+  })
+  
   $('form').submit(function () {
     if ($('.text-area').val().length > 140){
       $('.error').text("Error: Tweet exceeds 140 characters!")
@@ -102,16 +112,17 @@ $(document).ready(function() {
       }).then(function(tweetData){
         renderTweets(tweetData)
       });
-
       $('.error').hide(50)
     }
+    
     event.preventDefault();
-  });
-  
+  })
+
   $('#compose').click(function () {
     $('.new-tweet').slideToggle();
     $('.text-area').focus();
     $('text-area').select();
   });
+
 
 });

@@ -1,0 +1,12 @@
+$padding: 1rem;
+$borders: 1rem;
+
+%tweet-shared{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0.75rem auto;
+    border-radius: $borders;
+    width: 90%;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+}

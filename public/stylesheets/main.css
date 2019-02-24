@@ -1,0 +1,199 @@
+.container #tweets-container article, .container .new-tweet {
+  font-family: "Montserrat", sans-serif;
+  margin: 0.75rem auto;
+  border-radius: 1rem;
+  width: 90%;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  margin: 0;
+}
+body #nav-bar {
+  background: #ed6a5a;
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+  z-index: 1;
+}
+body #nav-bar .logo {
+  padding: 0.5rem;
+  float: left;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+}
+body #nav-bar .header {
+  padding: 1rem 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2rem;
+  display: inline-block;
+}
+body #nav-bar #compose {
+  float: right;
+  background-color: transparent;
+  border: 0.25rem solid #ffffff;
+  display: inline;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.125rem;
+  padding: 0.25rem 0.5em;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+body #nav-bar #compose:hover {
+  background-color: #000000;
+  color: #ed6a5a;
+  border: 0.25rem solid #000000;
+}
+body #nav-bar #compose:active {
+  position: relative;
+  top: 0.25rem;
+}
+
+.container {
+  padding-top: 5rem;
+}
+@media (min-width: 830px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-template-areas: "mainscreen secondaryscreen";
+  }
+}
+.container .new-tweet {
+  background: #ffffff;
+  border-color: #ed6a5a;
+  height: 18rem;
+  display: none;
+}
+@media (min-width: 830px) {
+  .container .new-tweet {
+    grid-area: mainscreen;
+    height: fit-content;
+    align-self: top;
+    display: inline;
+  }
+}
+.container .new-tweet .tweet-header {
+  padding: 0.75rem 1.5rem;
+  color: #ed6a5a;
+  text-decoration: none;
+  font-size: 2rem;
+}
+.container .new-tweet .text-area {
+  width: 90%;
+  height: 6rem;
+  font-size: 1.25rem;
+  display: block;
+  margin: 0.5rem auto;
+}
+.container .new-tweet .counter {
+  float: right;
+  margin: 1rem;
+}
+.container .new-tweet input[type=submit] {
+  background-color: transparent;
+  border: 0.125rem solid #ed6a5a;
+  color: #ed6a5a;
+  font-size: 1rem;
+  padding: 0.1 0.25rem 0.5rem;
+  text-decoration: none;
+  margin: 1rem;
+}
+.container .new-tweet input[type=submit]:hover {
+  background-color: #000000;
+  color: #ed6a5a;
+  border: 0.125rem solid #000000;
+}
+.container .new-tweet input[type=submit]:active {
+  position: relative;
+  top: 0.25rem;
+}
+.container .new-tweet .error {
+  float: top;
+  padding: 5px;
+  height: 30px;
+  background-color: #ff0000;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e8fdff;
+  display: none;
+}
+@media (min-width: 830px) {
+  .container #tweets-container {
+    grid-area: secondaryscreen;
+    height: fit-content;
+    align-self: top;
+    margin: 0;
+    width: 100%;
+  }
+}
+.container #tweets-container article:nth-child(3n+1) {
+  background: #f4f1bb;
+  border-color: #ffffff;
+}
+.container #tweets-container article:nth-child(3n+2) {
+  background: #9bc1bc;
+  border-color: #ffffff;
+}
+.container #tweets-container article:nth-child(3n+3) {
+  background: #e6ebe0;
+  border-color: #ffffff;
+}
+.container #tweets-container article {
+  opacity: 0.8;
+}
+.container #tweets-container article .message-header {
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2rem;
+  height: 30%;
+}
+.container #tweets-container article .message-logo {
+  width: 50px;
+  height: 50px;
+  margin: 0.5rem;
+  float: left;
+}
+.container #tweets-container article .message-id {
+  float: right;
+  font-weight: normal;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+.container #tweets-container article .message-body {
+  font-size: 1.5rem;
+  margin: 2rem 1rem;
+  word-wrap: break-word;
+}
+.container #tweets-container article .message-footer {
+  padding: 0.75rem;
+  border-top: 2px #000000 solid;
+  height: 5rem;
+}
+.container #tweets-container article .message-footer .time-passed {
+  display: inline-block;
+}
+.container #tweets-container article .message-footer .btn-sm {
+  float: right;
+}
+.container #tweets-container article:hover {
+  opacity: 1;
+  border: 0.25rem solid #9bc1bc;
+}
+
+/*# sourceMappingURL=main.css.map */
