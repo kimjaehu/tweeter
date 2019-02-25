@@ -4,18 +4,24 @@ function loadTweets() {
   return tweets;
 }
 
-//return for promise
-function loadNewTweet() {
-  return $.ajax('/tweets', { method: 'GET' })
-  return tweets[tweets.length];
-}
-
 //prepending the tweets
 function renderTweets(tweets) {
     for (tweet in tweets) {
     let tweetHtml = createTweetElement(tweets[tweet]);
     $('#tweets-container').prepend(tweetHtml);
   }  
+}
+
+//return for promise
+function loadNewTweet() {
+  return $.ajax('/tweets', { method: 'GET' })
+  return tweets;
+}
+
+//rendering New tweet
+function renderNewTweet(tweets) {
+  let tweetHtml = createTweetElement(tweets);
+  $('#tweets-container').prepend(tweetHtml);
 }
 
 //prevention of HTML code in inputs
@@ -85,7 +91,7 @@ function createTweetElement(tweet) {
 
 function likes(tweets){
     
-  console.log(tweets);
+  // console.log(tweets);
 }
 
 $(document).ready(function() {
@@ -110,7 +116,9 @@ $(document).ready(function() {
       }).then(function(){
         return loadNewTweet()
       }).then(function(tweetData){
-        renderTweets(tweetData)
+        // console.log(tweetData[tweetData.length - 1]);
+
+        renderNewTweet(tweetData[tweetData.length - 1])
       });
       $('.error').hide(50)
     }
