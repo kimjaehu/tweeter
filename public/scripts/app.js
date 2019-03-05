@@ -61,7 +61,8 @@ function timePassed(date) {
 
 //to html format
 function createTweetElement(tweet) {
-
+  // <script>$("div").data("id", ${tweet._id})</script>
+    
   let $tweet = 
   `
   <article>
@@ -81,7 +82,7 @@ function createTweetElement(tweet) {
       <span class="time-passed">${timePassed(tweet.created_at)}</span>
     <button type="button" class="btn btn-info btn-sm">
       <span class="glyphicon glyphicon-thumbs-up"></span>
-      <span class="like-count">0</span>
+      <span class="like-count">${tweet.likes}</span>
     </button>
     </footer>
   </article>
@@ -132,5 +133,9 @@ $(document).ready(function() {
     $('text-area').select();
   });
 
+
+  $('#tweets-container').on('click','footer button',  function() {
+       
+  });
 
 });
