@@ -20,13 +20,13 @@ function loadNewTweet() {
 
 //rendering New tweet
 function renderNewTweet(tweets) {
-  let tweetHtml = createTweetElement(tweets);
+  const tweetHtml = createTweetElement(tweets);
   $('#tweets-container').prepend(tweetHtml);
 }
 
 //prevention of HTML code in inputs
 function escape(str) {
-  var div = document.createElement('div');
+  const div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
@@ -34,36 +34,38 @@ function escape(str) {
 //now - time when the message was created
 function timePassed(date) {
 
-  let seconds = Math.floor((new Date() - date) / 1000);
-  let interval = Math.floor(seconds / 31536000);
+  const now = new Date()
+  let timeDiff = (now - date) / 1000;
+  // get seconds
+  const seconds = Math.round(timeDiff % 60);
+  // remove seconds from the date
+  timeDiff = Math.floor(timeDiff / 60);
+  // get minutes
+  const minutes = Math.round(timeDiff % 60);
+  // remove minutes from the date
+  timeDiff = Math.floor(timeDiff / 60);
+  // get hours
+  const hours = Math.round(timeDiff % 24);
+  // remove hours from the date
+  timeDiff = Math.floor(timeDiff / 24);
+  // the rest of timeDiff is number of days
+  const days = timeDiff ;
 
-  if (interval > 1) {
-    return interval + " years ago";
+  if (!minutes) {
+    return `${seconds} sec`
+  } else if (!hours) {
+    return `${minutes} min ${seconds} sec`
+  } else if (!days) {
+    return `${hours} hrs ${minutes} min ${seconds} sec ago`
+  } else {
+    return `${days} days ${hours} hrs ${minutes} min ${seconds} sec ago`
   }
-  interval = Math.floor(seconds / 2592000);
-  if (interval > 1) {
-    return interval + " months ago";
-  }
-  interval = Math.floor(seconds / 86400);
-  if (interval > 1) {
-    return interval + " days ago";
-  }
-  interval = Math.floor(seconds / 3600);
-  if (interval > 1) {
-    return interval + " hours ago";
-  }
-  interval = Math.floor(seconds / 60);
-  if (interval > 1) {
-    return interval + " minutes ago";
-  }
-  return Math.floor(seconds) + " seconds ago";
 }
 
 //to html format
 function createTweetElement(tweet) {
-  // <script>$("div").data("id", ${tweet._id})</script>
     
-  let $tweet = 
+  const $tweet = 
   `
   <article>
     <header class="message-header">
@@ -90,17 +92,11 @@ function createTweetElement(tweet) {
   return $tweet;
 }
 
-function likes(tweets){
-    
-  // console.log(tweets);
-}
-
 $(document).ready(function() {
   const dataPromise = loadTweets();
   dataPromise.then(function(tweetData){
     renderTweets(tweetData);
   })
-  
   $('form').submit(function () {
     if ($('.text-area').val().length > 140){
       $('.error').text("Error: Tweet exceeds 140 characters!")
@@ -109,33 +105,24 @@ $(document).ready(function() {
       $('.error').text("Error: Tweet message not found!")
       $('.error').show(50)      
     } else {
-      
       $.ajax({
-        url:"/tweets",
+        url:'/tweets',
         type: 'POST',
         data: $(this).serialize()
       }).then(function(){
         return loadNewTweet()
       }).then(function(tweetData){
-        // console.log(tweetData[tweetData.length - 1]);
-
         renderNewTweet(tweetData[tweetData.length - 1])
       });
       $('.error').hide(50)
     }
-    
     event.preventDefault();
   })
-
   $('#compose').click(function () {
     $('.new-tweet').slideToggle();
     $('.text-area').focus();
     $('text-area').select();
   });
-
-
   $('#tweets-container').on('click','footer button',  function() {
-       
   });
-
 });
