@@ -1,9 +1,7 @@
 //return for promise
 function loadTweets() {
-  return $.ajax('/tweets', { method: 'GET' })
-  return tweets;
+  return $.ajax('/tweets', { method: 'GET' });
 }
-
 //prepending the tweets
 function renderTweets(tweets) {
     for (tweet in tweets) {
@@ -11,30 +9,21 @@ function renderTweets(tweets) {
     $('#tweets-container').prepend(tweetHtml);
   }  
 }
-
-//return for promise
-function loadNewTweet() {
-  return $.ajax('/tweets', { method: 'GET' })
-  return tweets;
-}
-
 //rendering New tweet
 function renderNewTweet(tweets) {
   const tweetHtml = createTweetElement(tweets);
   $('#tweets-container').prepend(tweetHtml);
 }
-
 //prevention of HTML code in inputs
 function escape(str) {
   const div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
-
 //now - time when the message was created
 function timePassed(date) {
 
-  const now = new Date()
+  const now = new Date();
   let timeDiff = (now - date) / 1000;
   // get seconds
   const seconds = Math.round(timeDiff % 60);
@@ -52,13 +41,13 @@ function timePassed(date) {
   const days = timeDiff ;
 
   if (!minutes) {
-    return `${seconds} sec`
+    return `${seconds} sec ago`;
   } else if (!hours) {
-    return `${minutes} min ${seconds} sec`
+    return `${minutes} min ${seconds} sec ago`;
   } else if (!days) {
-    return `${hours} hrs ${minutes} min ${seconds} sec ago`
+    return `${hours} hrs ${minutes} min ${seconds} sec ago`;
   } else {
-    return `${days} days ${hours} hrs ${minutes} min ${seconds} sec ago`
+    return `${days} days ${hours} hrs ${minutes} min ${seconds} sec ago`;
   }
 }
 
@@ -110,7 +99,7 @@ $(document).ready(function() {
         type: 'POST',
         data: $(this).serialize()
       }).then(function(){
-        return loadNewTweet()
+        return loadTweets()
       }).then(function(tweetData){
         renderNewTweet(tweetData[tweetData.length - 1])
       });

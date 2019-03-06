@@ -3,12 +3,12 @@ $(document).ready(function() {
     
     const count = $(this).val().length;
     const maxChar = 140;
-    const $counter = $(this).siblings('.counter')
-  
+    const $counter = $(this).siblings('span')
+
     if (count <= maxChar) {
-      $counter.text(`${count}/${maxChar}`).css("color", "black");
+      $counter.text(`${count}/${maxChar}`).removeClass().addClass('counter')
     } else {
-      $counter.text(-($(this).val().substring(maxChar).length)).css("color", "red")
+      $counter.text(`${count}/${maxChar}`).removeClass().addClass('counter-red')
     }
   });
 });
