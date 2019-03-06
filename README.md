@@ -12,9 +12,11 @@ This repository is the starter code for the project: Students will fork and clon
 4. Click tweet button to submit. :+1:
 
 ## Screenshots
-!["Screenshot of compose box](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-textarea.png)
+!["Screenshot of app](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-app.png)
 
-!["Screenshot of tweets](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-tweets.png)
+!["Screenshot of compose area](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-input.png)
+
+!["Screenshot of new tweet](https://raw.githubusercontent.com/kimjaehu/tweeter/master/docs/tweet-new.png)
 
 ## Getting Started
 
