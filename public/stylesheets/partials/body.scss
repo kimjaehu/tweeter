@@ -6,15 +6,6 @@ body {
     
     font-family: 'Space Mono', monospace;
     margin: 0;
-
-    // #bg{
-    //     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 65% 75%, 0% 75%);
-    //     background-color: color(primary);
-    //     width: 100%;
-    //     height: 100%;
-    //     position: absolute;
-    //     z-index: -1;
-    // }
     
     #nav-bar {
         background: color(primary);
@@ -40,7 +31,6 @@ body {
         }
 
         #compose {
-            float: right;
             background-color:transparent;
             border:.25rem solid #ffffff;
             display:inline;
@@ -49,7 +39,8 @@ body {
             font-size:1.125rem;
             padding:.25rem .5em;
             text-decoration:none;
-            margin: .5rem
+            margin: .5rem;
+            float: right;
         }
         
         #compose:hover {
@@ -57,11 +48,11 @@ body {
             color:color(primary);
             border:.25rem solid #000000;
         }
+
         #compose:active {
             position:relative;
             top:.25rem;
         }
-
 
     }
 

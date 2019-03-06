@@ -43,8 +43,13 @@
         .counter {
             float: right;
             margin: 1rem;
+            color: #000000;
         }
-        
+        .counter-red {
+            float: right;
+            margin: 1rem;
+            color: #ff0000;
+        }
         input[type="submit"]{
             background-color:transparent;
             border:.125rem solid color(primary);

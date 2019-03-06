@@ -1,0 +1,51 @@
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  margin: 0;
+}
+body #nav-bar {
+  background: color(primary);
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+  z-index: 1;
+}
+body #nav-bar .logo {
+  padding: 0.5rem;
+  float: left;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+}
+body #nav-bar .header {
+  padding: 1rem 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2rem;
+  display: inline-block;
+}
+body #nav-bar #compose {
+  background-color: transparent;
+  border: 0.25rem solid #ffffff;
+  display: inline;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.125rem;
+  padding: 0.25rem 0.5em;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+body #nav-bar #compose:hover {
+  background-color: #000000;
+  color: color(primary);
+  border: 0.25rem solid #000000;
+}
+body #nav-bar #compose:active {
+  position: relative;
+  top: 0.25rem;
+}
+
+/*# sourceMappingURL=body.css.map */
